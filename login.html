@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librarian Login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #063565; }
+        .login-container { max-width: 400px; margin: 50px auto; position: relative;}
+        .login-form { padding: 20px; border-radius: 5px; background-color: #13015d; }
+        #spacer{
+            position: absolute;
+            top: 366px; /* Adjust as needed to align visually with the container */
+            left: 270px;
+            width: 99px;
+            height: 39px;
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <h2 class="text-center">Librarian Login</h2>
+            <div class="container mt-5">
+                <form action="login.php" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+        <button onclick="window.location.href='signup1.php'" id="spacer" class="btn btn-success">Sign Up</button>
+    </div>
+</body>
+</html>
