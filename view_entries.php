@@ -1,3 +1,13 @@
+<?php
+// dashboard.php
+session_start();
+
+if (!isset($_SESSION['user_name'])) {
+    header("Location: login.html");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,10 +113,10 @@
             <h4>Library Management</h4>
             <ul class="nav flex-column">
                 <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="physical_library.html">Physical Library</a></li>
-                <li class="nav-item"><a class="nav-link" href="digital_library.html">Digital Lab Library</a></li>
-                <li class="nav-item"><a class="nav-link" href="manual_entry.html">Manual Entry</a></li>
-                <li class="nav-item"><a class="nav-link" href="view_entries.html">View Entries</a></li>
+                <li class="nav-item"><a class="nav-link" href="physical_library.php">Physical Library</a></li>
+                <li class="nav-item"><a class="nav-link" href="digital_library.php">Digital Lab Library</a></li>
+                <li class="nav-item"><a class="nav-link" href="manual_entry.php">Manual Entry</a></li>
+                <li class="nav-item"><a class="nav-link" href="view_entries.php">View Entries</a></li>
             </ul>
         </div>
         <div class="main-content container">
@@ -148,6 +158,7 @@
                             <th>ID</th>
                             <th>Barcode</th>
                             <th>Username</th>
+                            <th>Designation</th>
                             <th>Entry Time</th>
                             <th>Exit Time</th>
                             <th>Mins</th>
@@ -201,6 +212,7 @@
                     <td>${entry.id}</td>
                     <td>${entry.barcode}</td>
                     <td>${entry.username}</td>
+                    <td>${entry.desg}</td
                     <td>${entry.entry_time}</td>
                     <td>${entry.exit_time ? entry.exit_time : 'N/A'}</td>
                     <td>${mins !== null ? mins : 'N/A'}</td>

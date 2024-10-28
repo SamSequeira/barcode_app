@@ -1,9 +1,19 @@
+<?php
+// dashboard.php
+session_start();
+
+if (!isset($_SESSION['user_name'])) {
+    header("Location: login.html");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Library</title>
+    <title>Physical Library</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -70,21 +80,21 @@
             <h4>Library Management</h4>
             <ul class="nav flex-column">
                 <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="physical_library.html">Physical Library</a></li>
-                <li class="nav-item"><a class="nav-link" href="digital_library.html">Digital Lab Library</a></li>
-                <li class="nav-item"><a class="nav-link" href="manual_entry.html">Manual Entry</a></li>
-                <li class="nav-item"><a class="nav-link" href="view_entries.html">View Entries</a></li>
+                <li class="nav-item"><a class="nav-link" href="physical_library.php">Physical Library</a></li>
+                <li class="nav-item"><a class="nav-link" href="digital_library.php">Digital Lab Library</a></li>
+                <li class="nav-item"><a class="nav-link" href="manual_entry.php">Manual Entry</a></li>
+                <li class="nav-item"><a class="nav-link" href="view_entries.php">View Entries</a></li>
             </ul>
         </div>
         
         <div class="scanner-container">
-            <h1>Digital Library</h1>
+            <h1>Physical Library</h1>
             <h2 class="my-4">Scan a Barcode</h2>
             <input type="text" id="scanner-input" placeholder="Scan Barcode Here" autofocus />
             <div id="barcode-result">Scanned Barcode: <span id="barcode"></span></div>
             <div id="success-message"></div>
             <div id="error-message"></div> <!-- New div for error messages -->
-            <input type="hidden" id="login-type" value="Digital" />
+            <input type="hidden" id="login-type" value="Physical" />
         </div>
     </div>
 
