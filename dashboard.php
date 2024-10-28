@@ -190,8 +190,7 @@ if (!isset($_SESSION['user_name'])) {
                 data: {
                     labels: ['Entries', 'Exits'],
                     datasets: [{
-                        label1: 'Entries',
-                        label2: 'Exits',
+                        label:'Daily Data',
                         data: [data.total_entries, data.total_exits],
                         backgroundColor: ['#4e73df', '#1cc88a'],
                         borderColor: ['#4e73df', '#1cc88a'],

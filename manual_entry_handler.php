@@ -37,24 +37,24 @@ if ($userResult->num_rows > 0) {
             // Update exit time
             $updateSql = "UPDATE users SET exit_time = '$exitTime' WHERE barcode = '$barcode' AND exit_time IS NULL AND login_type = '$libType'";
             if ($conn->query($updateSql) === TRUE) {
-                echo "<script>alert('Exit time updated successfully'); window.location.href='manual_entry.html';</script>";
+                echo "<script>alert('Exit time updated successfully'); window.location.href='manual_entry.php';</script>";
             } else {
-                echo "<script>alert('Error updating exit time: " . $conn->error . "'); window.location.href='manual_entry.html';</script>";
+                echo "<script>alert('Error updating exit time: " . $conn->error . "'); window.location.href='manual_entry.php';</script>";
             }
         } else {
-            echo "<script>alert('Exit time not provided. Existing entry remains unchanged.'); window.location.href='manual_entry.html';</script>";
+            echo "<script>alert('Exit time not provided. Existing entry remains unchanged.'); window.location.href='manual_entry.php';</script>";
         }
     } else {
         // No existing entry, so insert a new record
         $insertSql = "INSERT INTO users (barcode, username, entry_time, exit_time, login_type, desg, dept) VALUES ('$barcode', '$username', '$entryTime', NULL, '$libType', '$desg', '$dept')";
         if ($conn->query($insertSql) === TRUE) {
-            echo "<script>alert('Record added successfully'); window.location.href='manual_entry.html';</script>";
+            echo "<script>alert('Record added successfully'); window.location.href='manual_entry.php';</script>";
         } else {
-            echo "<script>alert('Error adding record: " . $conn->error . "'); window.location.href='manual_entry.html';</script>";
+            echo "<script>alert('Error adding record: " . $conn->error . "'); window.location.href='manual_entry.php';</script>";
         }
     }
 } else {
-    echo "<script>alert('Barcode not found in the system'); window.location.href='manual_entry.html';</script>";
+    echo "<script>alert('Barcode not found in the system'); window.location.href='manual_entry.php';</script>";
 }
 
 $conn->close();

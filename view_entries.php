@@ -7,7 +7,6 @@ if (!isset($_SESSION['user_name'])) {
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,8 +122,8 @@ if (!isset($_SESSION['user_name'])) {
             <!-- Breadcrumb Navigation -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="dashboard.html" class="text-black">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="view_entries.html" class="text-black">View Entries</a></li>
+                    <li class="breadcrumb-item"><a href="dashboard.php" class="text-black">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="view_entries.php" class="text-black">View Entries</a></li>
                     <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-type">Select Library</li>
                 </ol>
             </nav>
@@ -207,23 +206,28 @@ if (!isset($_SESSION['user_name'])) {
             tableBody.innerHTML = ''; // Clear existing data
             entriesData.forEach(entry => {
                 const mins = calculateMinutes(entry.entry_time, entry.exit_time);
+                const formattedEntryTime = new Date(entry.entry_time).toLocaleString(); // Format entry time
+                const formattedExitTime = new Date(entry.exit_time).toLocaleString(); // Format entry time
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${entry.id}</td>
                     <td>${entry.barcode}</td>
                     <td>${entry.username}</td>
-                    <td>${entry.desg}</td
-                    <td>${entry.entry_time}</td>
-                    <td>${entry.exit_time ? entry.exit_time : 'N/A'}</td>
+                    <td>${entry.desg}</td>
+                    <td>${formattedEntryTime}</td> <!-- Use formatted entry time -->
+                    <td>${formattedExitTime}</td>
                     <td>${mins !== null ? mins : 'N/A'}</td>
                 `;
                 tableBody.appendChild(row);
             });
             // Initialize DataTable
             $('#entryTable').DataTable({
-                "order": [[3, "desc"]] // Ensure the entry_time column (index 3) is sorted in descending order
+                "order": [[3, "desc"]], // Ensure the entry_time column (index 3) is sorted in descending order
+                "paging": true,
+                "searching": true
             });
         }
+
 
         function calculateMinutes(entryTime, exitTime) {
             if (!exitTime) return null;

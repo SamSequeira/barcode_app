@@ -62,17 +62,21 @@ if (!isset($_SESSION['user_name'])) {
                     <div class="form-group">
                         <label for="desg">Designation</label>
                         <select name="desg" id="desg" class="form-control" required>
-                            <option value="Staff">Staff</option>
                             <option value="Student">Student</option>
+                            <option value="Staff">Staff</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="dept">Department</label>
                         <select name="dept" id="dept" class="form-control" required>
                             <option value="COMP">COMP</option>
-                            <option value="MECH">MECH</option>
                             <option value="ECOMP">ECOMP</option>
-                        </select>                    </div>
+                            <option value="COMP">ECE</option>
+                            <option value="ECOMP">MAE</option>
+                            <option value="MECH">MBA</option>
+                            <option value="MECH">MECH</option>
+                        </select>                    
+                    </div>
                     <button type="submit" class="btn btn-primary btn-block">Submit</button>
                 </form>
             </div>
